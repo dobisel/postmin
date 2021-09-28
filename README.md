@@ -1,4 +1,4 @@
-# Sodina
+# PostMin
 
 ## Contribution
 
@@ -7,17 +7,22 @@
 Install the dependencies.
 
 You need the `nodejs`, `python3` and `pip3` to install the 
-[yhttp](https://github.com/yhttp/yhttp) which required by the ``server.py``.
+[yhttp](https://github.com/yhttp/yhttp) which required by the ``postmin.py``.
 
 
 ```bash
 make env
 ```
 
-...then start the development server.
+#### Lint
 
 ```bash
 make lint
+```
+
+...then start the development server.
+
+```bash
 make serve
 ```
 

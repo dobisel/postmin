@@ -4,6 +4,42 @@ PRJ = chord
 PYTEST_FLAGS = -v
 
 
+.PHONY: env-py
+env-py:
+	$(PIP) install -r requirements-dev.txt
+	$(PIP) install -e .
+
+
+.PHONY: env-node
+env-node:
+	npm install
+
+
+.PHONY: env
+env: env-py env-node
+
+
+.PHONY: lint-py
+lint-py:
+	flake8
+
+
+.PHONY: lint-node
+lint-node:
+	npm run lint
+
+
+.PHONY: lint
+lint: lint-py lint-node
+
+
+.PHONY: serve
+serve:
+	npm run dev
+
+########################
+
+
 .PHONY: test
 test:
 	pytest $(PYTEST_FLAGS) $(TEST_DIR)
@@ -12,17 +48,6 @@ test:
 .PHONY: cover
 cover:
 	pytest $(PYTEST_FLAGS) --cov=$(PRJ) $(TEST_DIR)
-
-
-.PHONY: lint
-lint:
-	flake8
-
-
-.PHONY: env
-env:
-	$(PIP) install -r requirements-dev.txt
-	$(PIP) install -e .
 
 
 .PHONY: sdist
