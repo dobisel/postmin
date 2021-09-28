@@ -1,0 +1,6 @@
+pytest-cov
+coveralls
+flake8
+bddcli
+bddrest
+
