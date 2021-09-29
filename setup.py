@@ -1,13 +1,12 @@
-import re
+import json
 
 from os.path import join, dirname
 from setuptools import setup, find_packages
 
 
 # reading package version (same way the sqlalchemy does)
-with open(join(dirname(__file__), 'chord', '__init__.py')) as v_file:
-    package_version = re.compile('.*__version__ = \'(.*?)\'', re.S).\
-        match(v_file.read()).group(1)
+with open(join(dirname(__file__), 'package.json')) as v_file:
+    package_version = json.load(v_file)['version']
 
 
 dependencies = [
@@ -17,14 +16,14 @@ dependencies = [
 
 
 setup(
-    name='chord',
+    name='postmin',
     version=package_version,
-    packages=find_packages(exclude=['tests']),
+    py_modules=['postmin'],
     install_requires=dependencies,
     license='MIT',
     entry_points={
         'console_scripts': [
-            'chord = chord:app.climain'
+            'postmin = postmin:app.climain'
         ]
     },
 

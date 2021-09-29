@@ -1,6 +1,6 @@
 PIP = pip
 TEST_DIR = tests
-PRJ = chord
+PRJ = postmin
 PYTEST_FLAGS = -v
 
 

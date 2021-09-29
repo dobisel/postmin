@@ -51,7 +51,7 @@ function serve() {
 	return {
 		writeBundle() {
 			if (server !== null) return;
-			server = require('child_process').spawn('./server.py', {
+			server = require('child_process').spawn('postmin serve', {
 				stdio: ['ignore', 'inherit', 'inherit'],
 				shell: true
 			});
